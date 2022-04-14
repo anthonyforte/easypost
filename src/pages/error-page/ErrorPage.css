@@ -1,0 +1,12 @@
+.error-404-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 450px;
+  margin: auto;
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 10px;
+}

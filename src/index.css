@@ -1,0 +1,10 @@
+body {
+  background: #ffffff;
+}
+
+.layout-container {
+  margin: auto;
+  height: auto;
+  max-width: 1200px;
+  padding-top: 20px;
+}

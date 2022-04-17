@@ -85,7 +85,7 @@ export default class ParcelForm extends Component {
                 required
                 type='number'
                 step='0.1'
-                min={0}
+                min={0.1}
                 name='length'
                 onChange={(e) => this.handleChange(e)}
               />
@@ -98,7 +98,7 @@ export default class ParcelForm extends Component {
                 required
                 type='number'
                 step='0.1'
-                min={0}
+                min={0.1}
                 name='width'
                 onChange={(e) => this.handleChange(e)}
               />
@@ -113,7 +113,7 @@ export default class ParcelForm extends Component {
                 required
                 type='number'
                 step='0.1'
-                min={0}
+                min={0.1}
                 name='height'
                 onChange={(e) => this.handleChange(e)}
               />
@@ -126,7 +126,7 @@ export default class ParcelForm extends Component {
                 required
                 type='number'
                 step='0.1'
-                min={0}
+                min={0.1}
                 name='weight'
                 onChange={(e) => this.handleChange(e)}
               />

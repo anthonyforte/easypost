@@ -8,6 +8,8 @@ import Row from 'react-bootstrap/Row';
 
 import TimedAlert from 'src/components/alert/TimedAlert';
 
+import configData from 'src/config.json';
+
 export default class AddressForm extends Component {
 
   constructor(props) {
@@ -36,7 +38,7 @@ export default class AddressForm extends Component {
     event.stopPropagation();
 
     try {
-      const response = await axios.post('http://localhost:8000/addresses', this.state.address);
+      const response = await axios.post(`${configData.API_URL}/addresses`, this.state.address);
       if (response.status === 200) {
         // check verifications
         const verifications = response.data.verifications;

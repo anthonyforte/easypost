@@ -11,6 +11,8 @@ import Tab from 'react-bootstrap/Tab';
 import AddressForm from 'src/forms/address-form/AddressForm';
 import ParcelForm from 'src/forms/parcel-form/ParcelForm';
 
+import configData from 'src/config.json';
+
 export default class ShipmentForm extends Component {
 
   constructor(props) {
@@ -46,7 +48,7 @@ export default class ShipmentForm extends Component {
         from_adddress_id: this.state.fromAddressID,
         parcel_id: this.state.parcelID
       };
-      const response = await axios.post('http://localhost:8000/shipments', {}, { params });
+      const response = await axios.post(`${configData.API_URL}/shipments`, {}, { params });
 
       // determine carriers
       var carriers = new Set();
@@ -71,7 +73,7 @@ export default class ShipmentForm extends Component {
         rate_id: this.state.rateID
       };
 
-      const response = await axios.post(`http://localhost:8000/shipments/${this.state.shipmentID}/buy`, {}, { params });
+      const response = await axios.post(`${configData.API_URL}/shipments/${this.state.shipmentID}/buy`, {}, { params });
       window.open(response.data.postage_label.label_url);
     }
   }
@@ -118,6 +120,7 @@ export default class ShipmentForm extends Component {
   renderRatesForm() {
     return (
       <Form onSubmit={(e) => this.buyShipment(e)}>
+        <h5>Rates</h5>
         <Row>
           <Col xs={3}>
             <Form.Group className='mb-3' controlId='carrier'>

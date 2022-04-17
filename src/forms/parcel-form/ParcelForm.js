@@ -8,6 +8,8 @@ import Row from 'react-bootstrap/Row';
 
 import TimedAlert from 'src/components/alert/TimedAlert';
 
+import configData from 'src/config.json';
+
 export default class ParcelForm extends Component {
 
   constructor(props) {
@@ -29,7 +31,7 @@ export default class ParcelForm extends Component {
     event.stopPropagation();
 
     try {
-      const response = await axios.post('http://localhost:8000/parcels', this.state.parcel);
+      const response = await axios.post(`${configData.API_URL}/parcels`, this.state.parcel);
       if (response.status === 200) {
         // run callback function if provided
         if (this.props.onSubmit) {

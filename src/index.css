@@ -1,3 +1,5 @@
+// global css
+
 body {
   background: #ffffff;
 }
@@ -7,4 +9,9 @@ body {
   height: auto;
   max-width: 1200px;
   padding-top: 20px;
+}
+
+.required:after {
+  content:" *";
+  color: red;
 }

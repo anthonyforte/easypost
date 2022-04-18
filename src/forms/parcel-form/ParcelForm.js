@@ -25,7 +25,7 @@ export default class ParcelForm extends Component {
     };
   }
 
-  // handle form submission and create/verify address with the backend
+  // handle form submission and create parcel with the backend
   async handleSubmit(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -35,8 +35,7 @@ export default class ParcelForm extends Component {
       if (response.status === 200) {
         // run callback function if provided
         if (this.props.onSubmit) {
-          // return the parcel id
-          this.props.onSubmit(response.data.id);
+          this.props.onSubmit(response.data.id); // return the parcel id
         }
       } else {
         throw new Error('could not create parcel');
@@ -48,7 +47,7 @@ export default class ParcelForm extends Component {
     }
   }
 
-  // capture and change in user input and update this.state
+  // capture a change in user input and update this.state
   handleChange(event) {
     const parcel = { ...this.state.parcel, [event.target.name]: event.target.value }
     this.setState({
@@ -60,7 +59,7 @@ export default class ParcelForm extends Component {
     if (this.state.error) {
       return (
         <TimedAlert
-          timeout={10000}
+          timeout={5000}
           heading='Could not create parcel!'
           body='Please check your submission for errors and re-submit.'
           onClose={() => this.setState({ error: false })}

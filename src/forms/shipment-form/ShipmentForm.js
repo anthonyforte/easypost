@@ -41,6 +41,7 @@ export default class ShipmentForm extends Component {
     }
   }
 
+  // request a shipment to be created from the backend
   async createShipment() {
     if (this.state.toAddressID && this.state.fromAddressID && this.state.parcelID) {
       const params = {
@@ -50,7 +51,7 @@ export default class ShipmentForm extends Component {
       };
       const response = await axios.post(`${configData.API_URL}/shipments`, {}, { params });
 
-      // determine carriers
+      // determine unique carriers
       var carriers = new Set();
       response.data.rates.forEach(r => carriers.add(r.carrier));
 
@@ -64,6 +65,7 @@ export default class ShipmentForm extends Component {
     }
   }
 
+  // request a shipment to be purchased with a specific rate
   async buyShipment(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -74,7 +76,7 @@ export default class ShipmentForm extends Component {
       };
 
       const response = await axios.post(`${configData.API_URL}/shipments/${this.state.shipmentID}/buy`, {}, { params });
-      window.open(response.data.postage_label.label_url);
+      window.open(response.data.postage_label.label_url); // open the label in a new window
     }
   }
 

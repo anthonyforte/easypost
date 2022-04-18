@@ -8,9 +8,6 @@ export default class TimedAlert extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      show: true
-    };
     this.timer = setTimeout(
       () => this.close(),
       (this.props.timeout ? this.props.timeout : 5000) // default 5s
@@ -22,10 +19,6 @@ export default class TimedAlert extends Component {
   }
 
   close() {
-    this.setState({
-      show: false
-    });
-
     if (this.props.onClose) {
       this.props.onClose();
     }
@@ -33,7 +26,7 @@ export default class TimedAlert extends Component {
 
   render() {
     return (
-      <Alert show={this.state.show}  onClose={() => this.close()} variant="warning" dismissible>
+      <Alert show={true}  onClose={() => this.close()} variant="warning" dismissible>
         <Alert.Heading>{this.props.heading}</Alert.Heading>
         <p>
           {this.props.body}

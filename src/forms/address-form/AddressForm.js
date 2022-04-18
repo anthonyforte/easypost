@@ -40,7 +40,7 @@ export default class AddressForm extends Component {
     try {
       const response = await axios.post(`${configData.API_URL}/addresses`, this.state.address);
       if (response.status === 200) {
-        // check verifications
+        // check address verifications
         const verifications = response.data.verifications;
         for (var key of Object.keys(verifications)) {
           if (!verifications[key].success) {
@@ -50,8 +50,7 @@ export default class AddressForm extends Component {
 
         // run callback function if provided
         if (this.props.onSubmit) {
-          // return the address id
-          this.props.onSubmit(response.data.id);
+          this.props.onSubmit(response.data.id); // return the address id
         }
       } else {
         throw new Error('could not verify address');
@@ -63,7 +62,7 @@ export default class AddressForm extends Component {
     }
   }
 
-  // capture and change in user input and update this.state
+  // capture a change in user input and update this.state
   handleChange(event) {
     const address = { ...this.state.address, [event.target.name]: event.target.value }
     this.setState({
@@ -75,7 +74,7 @@ export default class AddressForm extends Component {
     if (this.state.error) {
       return (
         <TimedAlert
-          timeout={10000}
+          timeout={5000}
           heading='Could not verify address!'
           body='Please check your address for errors and re-submit.'
           onClose={() => this.setState({ error: false })}

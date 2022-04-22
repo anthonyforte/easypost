@@ -14,7 +14,7 @@ class Navigation extends Component {
         <Navbar.Toggle/>
         <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='ms-auto'>
-            <Nav.Link href='/'>Create Label</Nav.Link>
+            <Nav.Link href='/create'>Create Label</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
